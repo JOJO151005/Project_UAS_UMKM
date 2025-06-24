@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UmkmResource\Pages;
-use App\Filament\Resources\UmkmResource\RelationManagers;
-use App\Models\Umkm;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Umkm;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\UmkmResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\UmkmResource\RelationManagers;
 
 class UmkmResource extends Resource
 {
@@ -58,6 +60,9 @@ class UmkmResource extends Resource
                         Forms\Components\TextInput::make('email')
                             ->email()
                             ->maxLength(255),
+
+
+                        FileUpload::make('Gambar'),
                     ])->columns(2),
                 
                 Forms\Components\Section::make('Kategori & Lokasi')
@@ -105,6 +110,7 @@ class UmkmResource extends Resource
                 Tables\Columns\IconColumn::make('rating')
                     ->icon('heroicon-o-star')
                     ->color('warning'),
+                    ImageColumn::make('Gambar')
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('kategori_umkm_id')
