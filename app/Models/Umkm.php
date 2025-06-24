@@ -21,6 +21,7 @@ class Umkm extends Model
         'website',
         'email',
         'rating',
+        'Gambar',
         'kabkota_id',
         'kategori_umkm_id',
         'pembina_id',
